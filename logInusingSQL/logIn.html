@@ -1,0 +1,46 @@
+<html>
+<title>user logIn</title>
+<p>log in with valid userNmae and password</p>
+<head>
+<script type="text/javascript">
+function validateForm()
+{
+var ua=documents.forms["logIn"]["name"].value; //ua for user name
+var ub=documents.forms["logIn"]["pass"].value; //ub for user password
+var uname="root";
+var upass="";
+var db="login";
+
+var conn=new mysqli("localhost",$dbuserName,$dbpassword,$db)or die("unable to connect the database");
+var sql1="select * from userinfo where name='ua'";
+var sql2="select * from userinfo where password='ub'";
+var result1=mysqli_query(conn,sql1);
+var result2=mysqli_query(conn,sql2);
+var count1=mysqli_num_rows(result1);
+var count2=mysqli_num_rows(result2);
+
+if(!ua=count1)
+{
+alert("user name is not correct");
+return false;
+}
+if(ub==count2)
+{
+alert("password is not correct");
+return false;
+}
+
+
+}
+</script>
+</head>
+<body>
+<form name="logIn" onsubmit="return validateForm()" method="post" action="auth.php">
+<label for="id">Name</label>
+<input type="text" name="name" id="name"></br>
+<label for="pass">Password</label>
+<input type="text" name="pass" id="pass"></br>
+<input type="submit" name="submit" value="submit">
+</form>
+</body>
+</html>

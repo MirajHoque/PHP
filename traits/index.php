@@ -2,15 +2,18 @@
 
 include "mobile.php";
 include "laser.php";
-include "projector.php";
 
 class Galaxy extends Mobile{
     
-    use Laser, Projector;
+    use Laser;
+
+    public function power(){
+        echo "I am from index";
+    }
 
 }
 
 $obj = new Galaxy;
-$obj->power(); 
-$obj->battery();
-$obj->range();
+$obj->power();
+//$obj->battery();
+//$obj->range();
